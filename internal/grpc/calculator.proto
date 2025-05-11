@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "github.com/zubrodin/calc-service/internal/grpc";
+
+service Calculator {
+  rpc GetTask (TaskRequest) returns (TaskResponse);
+  rpc SubmitResult (ResultRequest) returns (ResultResponse);
+}
+
+message TaskRequest {
+  string worker_id = 1;
+}
+
+message TaskResponse {
+  string id = 1;
+  string arg1 = 2;
+  string arg2 = 3;
+  string operation = 4;
+}
+
+message ResultRequest {
+  string id = 1;
+  double result = 2;
+}
+
+message ResultResponse {
+  bool success = 1;
+}
